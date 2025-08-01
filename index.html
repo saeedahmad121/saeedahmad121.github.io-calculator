@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="calc">
+        <div id="content">
+            <form>
+                <div id="output">
+                    <input type="text" id='result'>
+                </div>
+                <div class="btn">
+                    <input type="button" value='C' onclick="Clear()" id="clear">
+                    <input type="button" value='?' onclick="Back()" id="backspace">
+                    <input type="button" value='%' onclick="Solve('%')">
+                    <input type="button" value='/' onclick="Solve('/')">
+                    <br>
+                    <input type="button" value='7' onclick="Solve('7')">
+                    <input type="button" value='8' onclick="Solve('8')">
+                    <input type="button" value='9' onclick="Solve('9')">
+                    <input type="button" value='x' onclick="Solve('*')">
+                    <br>
+                    <input type="button" value='4' onclick="Solve('4')">
+                    <input type="button" value='5' onclick="Solve('5')">
+                    <input type="button" value='6' onclick="Solve('6')">
+                    <input type="button" value='-' onclick="Solve('-')">
+                    <br>
+                    <input type="button" value='1' onclick="Solve('1')">
+                    <input type="button" value='2' onclick="Solve('2')">
+                    <input type="button" value='3' onclick="Solve('3')">
+                    <input type="button" value='+' onclick="Solve('+')">
+                    <br>
+                    <input type="button" value='00' onclick="Solve('00')">
+                    <input type="button" value='0' onclick="Solve('0')">
+                    <input type="button" value='.' onclick="Solve('.')">
+                    <input type="button" value='=' onclick="resultult()">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+
+
+        function Solve(val) {
+            var v = document.getElementById('result');
+            v.value += val;
+        }
+
+        function resultult() {
+            var num1 = document.getElementById('result').value;
+            try {
+                var num2 = eval(num1.replace('x', '*'));
+                document.getElementById('result').value = num2;
+            } catch {
+                document.getElementById('result').value = 'Error';
+            }
+        }
+
+        function Clear() {
+            var inp = document.getElementById('result');
+            inp.value = '';
+        }
+        function Back() {
+            var ev = document.getElementById('result');
+            ev.value = ev.value.slice(0, -1);
+        }
+        document.addEventListener('keydown', function (event) {
+            const key = event.key;
+            const validKeys = '0123456789+-*/.%';
+            if (validKeys.includes(key)) {
+                Solve(key === '*' ? 'x' : key);
+            }
+            else if (key === 'Enter') {
+                resultult();
+            }
+            else if (key === 'Backspace') {
+                Back();
+            }
+            else if (key.toLowerCase() === 'c') {
+                Clear();
+            }
+        });
+
+
+
+    </script>
+</body>
+
+</html>
