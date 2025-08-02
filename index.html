@@ -1,93 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div id="calc">
-        <div id="content">
-            <form>
-                <div id="output">
-                    <input type="text" id='result'>
-                </div>
+    <div class="container">
+
+        <div class="calc">
+            <form >
+                <input type="text" name="result" id="result">
+
                 <div class="btn">
-                    <input type="button" value='C' onclick="Clear()" id="clear">
-                    <input type="button" value='?' onclick="Back()" id="backspace">
-                    <input type="button" value='%' onclick="Solve('%')">
-                    <input type="button" value='/' onclick="Solve('/')">
+                    <input onclick="Clear()" value = "C" type="button" id="clear" >
+                    <input onclick="Back()" value = "?" type="button" id="backspace" >
+                    <input onclick="Solve('%')" value = "%" type="button" value="">
+                    <input onclick="Solve('/')" value = "/" type="button" value="">
                     <br>
-                    <input type="button" value='7' onclick="Solve('7')">
-                    <input type="button" value='8' onclick="Solve('8')">
-                    <input type="button" value='9' onclick="Solve('9')">
-                    <input type="button" value='x' onclick="Solve('*')">
+                    <input onclick="Solve('7')" value="7" type="button" >
+                    <input onclick="Solve('8')" value="8" type="button" >
+                    <input onclick="Solve('9')" value="9" type="button" >
+                    <input onclick="Solve('*')" value="x" type="button" >
                     <br>
-                    <input type="button" value='4' onclick="Solve('4')">
-                    <input type="button" value='5' onclick="Solve('5')">
-                    <input type="button" value='6' onclick="Solve('6')">
-                    <input type="button" value='-' onclick="Solve('-')">
+                    <input onclick="Solve('4')" value="4" type="button" >
+                    <input onclick="Solve('5')" value="5" type="button" >
+                    <input onclick="Solve('6')" value="6" type="button" >
+                    <input onclick="Solve('-')" value="-" type="button" >
                     <br>
-                    <input type="button" value='1' onclick="Solve('1')">
-                    <input type="button" value='2' onclick="Solve('2')">
-                    <input type="button" value='3' onclick="Solve('3')">
-                    <input type="button" value='+' onclick="Solve('+')">
+                    <input onclick="Solve('1')" value="1" type="button" >
+                    <input onclick="Solve('2')" value="2" type="button" >
+                    <input onclick="Solve('3')" value="3" type="button" >
+                    <input onclick="Solve('+')" value="+" type="button" >
                     <br>
-                    <input type="button" value='00' onclick="Solve('00')">
-                    <input type="button" value='0' onclick="Solve('0')">
-                    <input type="button" value='.' onclick="Solve('.')">
-                    <input type="button" value='=' onclick="resultult()">
+                    <input onclick="Solve('0')" value="0" type="button" >
+                    <input onclick="Solve('00')" value="00" type="button" >
+                    <input onclick="Solve('.')" value="." type="button" >
+                    <input onclick="Solve('=')" value="=" type="button" >
                 </div>
             </form>
         </div>
     </div>
-    <script>
 
-
-        function Solve(val) {
-            var v = document.getElementById('result');
-            v.value += val;
-        }
-
-        function resultult() {
-            var num1 = document.getElementById('result').value;
-            try {
-                var num2 = eval(num1.replace('x', '*'));
-                document.getElementById('result').value = num2;
-            } catch {
-                document.getElementById('result').value = 'Error';
-            }
-        }
-
-        function Clear() {
-            var inp = document.getElementById('result');
-            inp.value = '';
-        }
-        function Back() {
-            var ev = document.getElementById('result');
-            ev.value = ev.value.slice(0, -1);
-        }
-        document.addEventListener('keydown', function (event) {
-            const key = event.key;
-            const validKeys = '0123456789+-*/.%';
-            if (validKeys.includes(key)) {
-                Solve(key === '*' ? 'x' : key);
-            }
-            else if (key === 'Enter') {
-                resultult();
-            }
-            else if (key === 'Backspace') {
-                Back();
-            }
-            else if (key.toLowerCase() === 'c') {
-                Clear();
-            }
-        });
-
-
-
-    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
+
